@@ -7,10 +7,18 @@
   padding: 8rem;
 
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr; // first row occupies all empty space possible
-  grid-template-columns: max-content;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content ) 1fr; // first row occupies all empty space possible
+  grid-template-columns: minmax(min-content, max-content);
   grid-gap: 1.5rem;
   justify-content: center;
+
+  @media only screen and (max-width: $bp-med) {
+    grid-column: 1 / -1;
+  }
+
+  @media only screen and (max-width: $bp-sm) {
+    padding: 5rem;
+  }
 
 
   &__logo {
@@ -46,9 +54,11 @@
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 3rem;
     justify-items: center;
+    align-items: center;
 
     img {
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;
       filter:brightness(70%);
     }
   }
